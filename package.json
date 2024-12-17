@@ -1,0 +1,45 @@
+{
+	"author": {
+		"name": "Baptiste Pillot",
+		"email": "baptiste@pillot.fr"
+	},
+	"description": "Helper types and functions to identify, validate, and manipulate classes, objects, prototypes and their properties",
+	"devDependencies": {
+		"typescript": "~5.6"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"exports": {
+		"import": "./esm/class-type.js",
+		"require": "./cjs/class-type.js"
+	},
+	"files": [
+		"LICENSE",
+		"README.md",
+		"*/*.d.ts",
+		"*/*.js"
+	],
+	"keywords": [
+		"class",
+		"constructor",
+		"helper",
+		"it.rocks",
+		"object",
+		"runtime",
+		"type",
+		"type validation",
+		"validate",
+		"validation"
+	],
+	"license": "ISC",
+	"name": "@itrocks/class-type",
+	"repository": "https://github.com/itrocks-ts/class-type",
+	"scripts": {
+		"build": "npm run build:cjs && npm run build:esm",
+		"build:cjs": "tsc -p tsconfig.cjs.json",
+		"build:esm": "tsc -p tsconfig.esm.json"
+	},
+	"types": "./esm/class-type.d.ts",
+	"version": "0.0.1"
+}
