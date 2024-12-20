@@ -2,7 +2,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@itrocks/class-type)](https://www.npmjs.org/package/@itrocks/class-type)
 [![GitHub](https://img.shields.io/github/last-commit/itrocks-ts/class-type?color=2dba4e&label=commit&logo=github)](https://github.com/itrocks-ts/class-type)
 [![issues](https://img.shields.io/github/issues/itrocks-ts/class-type)](https://github.com/itrocks-ts/class-type/issues)
-[![discord](https://img.shields.io/discord/1314141024020467782?color=7289da&label=discord&logo=discord&logoColor=white)](https://discord.gg/RZYhmhgrCk)
+[![discord](https://img.shields.io/discord/1314141024020467782?color=7289da&label=discord&logo=discord&logoColor=white)](https://25.re/ditr)
 
 # class-type
 
