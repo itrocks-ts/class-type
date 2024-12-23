@@ -82,10 +82,3 @@ export function typeOf<T extends object>(target: ObjectOrType<T>): Type<T>
 		? Object.getPrototypeOf(target).constructor
 		: target
 }
-
-
-
-class OriginalClass {}
-const AnonymousClass = () => class extends OriginalClass {}
-
-console.log(baseType(AnonymousClass()))   // Outputs: OriginalClass
