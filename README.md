@@ -161,6 +161,23 @@ const AnonymousClass = (() => class extends OriginalClass {})()
 console.log(baseType(AnonymousClass))   // Outputs: OriginalClass
 ```
 
+### inherits
+
+```ts
+function inherits(type: Type, superType: Type): boolean
+```
+
+Checks if a class (or [Type](#type)) is derived from another class [class](#type), mimicking the behaviour of
+[instanceof](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/instanceof),
+but operating at the class level.
+
+**Parameters:**
+- `type`: The class whose inheritance chain will be checked
+- `superType`: The parent class to check against.
+
+**Returns:**
+- `boolean`: Returns `true` if `type` is equal to or inherits from `superType`, otherwise `false`.
+
 ### isAnyFunction
 
 ```ts

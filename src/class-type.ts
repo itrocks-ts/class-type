@@ -36,6 +36,15 @@ function baseTypeWithReservedClassNames<T extends object>(target: Type<T>): Type
 	return target
 }
 
+export function inherits<T extends object, S extends object>(type: Type<S|T>, superType: Type<S>): type is Type<S&T>
+{
+	while (type) {
+		if (type === superType) return true
+		type = Object.getPrototypeOf(type)
+	}
+	return false
+}
+
 export function isAnyFunction(value: any): value is Function
 {
 	return ((typeof value)[0] === 'f') && ((value + '')[0] !== 'c')
