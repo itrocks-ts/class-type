@@ -14,6 +14,7 @@
 		"import": "./esm/class-type.js",
 		"require": "./cjs/class-type.js"
 	},
+	"homepage": "https://it.rocks",
 	"files": [
 		"LICENSE",
 		"README.md",
@@ -34,12 +35,15 @@
 	],
 	"license": "ISC",
 	"name": "@itrocks/class-type",
-	"repository": "https://github.com/itrocks-ts/class-type",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/itrocks-ts/class-type.git"
+	},
 	"scripts": {
 		"build": "npm run build:cjs && npm run build:esm",
 		"build:cjs": "tsc -p tsconfig.cjs.json",
 		"build:esm": "tsc -p tsconfig.esm.json"
 	},
 	"types": "./esm/class-type.d.ts",
-	"version": "0.0.7"
+	"version": "0.0.8"
 }
