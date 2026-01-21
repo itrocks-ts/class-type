@@ -116,7 +116,7 @@ with predefined names that should be ignored.
 
 **Example:**
 ```ts
-import { addReservedClassNames, baseType } from './class-type'
+import { addReservedClassNames, baseType } from '@itrocks/class-type'
 
 class Foo {}
 class Bar extends Foo {}
@@ -167,7 +167,7 @@ console.log(baseType(AnonymousClass))   // Outputs: OriginalClass
 function inherits(type: Type, superType: Type): boolean
 ```
 
-Checks if a class (or [Type](#type)) is derived from another class [class](#type), mimicking the behaviour of
+Checks if a class (or [Type](#type)) is derived from another class [Type](#type), mimicking the behaviour of
 [instanceof](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/instanceof),
 but operating at the class level.
 
@@ -262,35 +262,42 @@ known to be either an object instance or a class [Type](#type).
 **Returns:**
 - `true` if target is a [Type](#type) (i.e. class constructor), `false` if it is a `T` object instance.
 
-### prototypeOf
+### prototypeTargetOf
 
 ```ts
-function prototypeOf<T extends object>(target: ObjectOrType<T>): T
+function prototypeTargetOf<T extends object>(target: ObjectOrType<T>): T
 ```
-Returns `target` as a prototype.
-
-If `target` is a class constructor (i.e. [Type](#type), it returns `target.prototype`.\
-If `target` is an object instance, it returns `target` itself.
+Returns the appropriate target for prototype-based introspection:
+- the constructor's prototype when a [Type](#type) is provided,
+- the object itself when an instance is provided.
 
 **Parameters:**
 - `target`: Either an object or a class constructor.
 
 **Returns:**
-- The prototype object of the given target.
+- the target used for prototype-based introspection. 
+
+**Example:**
+```ts
+import { prototypeTargetOf } from '@itrocks/class-type'
+class User {}
+prototypeTargetOf(User)       // User.prototype
+prototypeTargetOf(new User()) // the User instance itself
+```
 
 ### typeIdentifier
 
 ```ts
-function typeIdentifier(type: Type): Symbol
+function typeIdentifier(type: Type): symbol
 ```
-Returns a [Symbol](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+Returns a [symbol](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 for the given class constructor (i.e. [Type](#type)).
 
 **Parameters:**
 - `type`: The class constructor.
 
 **Returns:**
-- A unique Symbol associated with that type’s constructor name.
+- A unique Symbol associated with the given constructor, stable for the lifetime of the process.
 
 ### typeOf
 

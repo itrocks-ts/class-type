@@ -11,23 +11,14 @@ export type Type<T extends object = object> = new (...args: any[]) => T
 
 const reservedClassNames: string[] = []
 
+const typeIdentifiers = new WeakMap<Type, symbol>()
+
 export function addReservedClassNames(...classNames: string[])
 {
 	reservedClassNames.push(...classNames)
-	if (baseType !== baseTypeWithReservedClassNames) {
-		baseType = baseTypeWithReservedClassNames
-	}
 }
 
-export let baseType = <T extends object>(target: Type<T>): Type<T> =>
-{
-	while (!target.name.length) {
-		target = Object.getPrototypeOf(target)
-	}
-	return target
-}
-
-function baseTypeWithReservedClassNames<T extends object>(target: Type<T>): Type<T>
+export function baseType<T extends object>(target: Type<T>): Type<T>
 {
 	while (!target.name.length || reservedClassNames.includes(target.name)) {
 		target = Object.getPrototypeOf(target)
@@ -74,14 +65,18 @@ export function isType<T extends object>(target: ObjectOrType<T>): target is Typ
 	return (typeof target)[0] === 'f'
 }
 
-export function prototypeOf<T extends object>(target: ObjectOrType<T>): T
+export function prototypeTargetOf<T extends object>(target: ObjectOrType<T>): T
 {
 	return isType(target) ? target.prototype : target
 }
 
 export function typeIdentifier(type: Type)
 {
-	return Symbol.for(type.prototype.constructor.name)
+	let identifier = typeIdentifiers.get(type)
+	if (identifier) return identifier
+	identifier = Symbol(type.name || 'anonymous')
+	typeIdentifiers.set(type, identifier)
+	return identifier
 }
 
 export function typeOf<T extends object>(target: ObjectOrType<T>): Type<T>
