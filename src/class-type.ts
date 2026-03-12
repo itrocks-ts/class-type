@@ -1,13 +1,14 @@
 
 export type AnyObject = Record<string, any>
 
-export type KeyOf<T> = Extract<keyof T, string>
+// @deprecated keyof T should be used instead
+export type KeyOf<T extends object> = Extract<keyof T, string>
 
 export type ObjectOrType<T extends object = object> = T | Type<T>
 
 export type StringObject = Record<string, string>
 
-export type Type<T extends object = object> = new (...args: any[]) => T
+export type Type<T extends object = object> = new (...args: unknown[]) => T
 
 const reservedClassNames: string[] = []
 
