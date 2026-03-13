@@ -1,9 +1,4 @@
 
-export type AnyObject = Record<string, any>
-
-// @deprecated keyof T should be used instead
-export type KeyOf<T extends object> = Extract<keyof T, string>
-
 export type ObjectOrType<T extends object = object> = T | Type<T>
 
 export type StringObject = Record<string, string>
