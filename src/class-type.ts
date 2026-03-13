@@ -8,7 +8,7 @@ export type ObjectOrType<T extends object = object> = T | Type<T>
 
 export type StringObject = Record<string, string>
 
-export type Type<T extends object = object> = new (...args: unknown[]) => T
+export type Type<T extends object = object> = new (...args: any[]) => T
 
 const reservedClassNames: string[] = []
 
