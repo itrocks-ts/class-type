@@ -5,21 +5,18 @@
 	},
 	"description": "Helper types and functions to identify, validate, and manipulate classes, objects, prototypes and their properties",
 	"devDependencies": {
-		"typescript": "~5.9"
+		"typescript": "^6.0"
 	},
 	"engines": {
-		"node": ">=18"
+		"node": ">=24"
 	},
-	"exports": {
-		"import": "./esm/class-type.js",
-		"require": "./cjs/class-type.js"
-	},
+	"exports": "./cjs/class-type.js",
 	"homepage": "https://it.rocks",
 	"files": [
 		"LICENSE",
 		"README.md",
-		"*/*.d.ts",
-		"*/*.js"
+		"cjs",
+		"!*.map"
 	],
 	"keywords": [
 		"backend",
@@ -41,10 +38,7 @@
 		"url": "git+https://github.com/itrocks-ts/class-type.git"
 	},
 	"scripts": {
-		"build": "npm run build:cjs && npm run build:esm",
-		"build:cjs": "tsc -p tsconfig.cjs.json",
-		"build:esm": "tsc -p tsconfig.esm.json"
+		"build": "tsc"
 	},
-	"types": "./esm/class-type.d.ts",
-	"version": "0.2.2"
+	"version": "0.2.3"
 }
